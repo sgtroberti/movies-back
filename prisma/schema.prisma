@@ -11,29 +11,29 @@ datasource db {
 }
 
 model User {
-  id            Int      @id @default(autoincrement())
-  name          String?  @db.VarChar(255)
-  email         String   @unique @db.VarChar(255)
+  id            Int       @id @default(autoincrement())
+  name          String?   @db.VarChar(255)
+  email         String    @unique @db.VarChar(255)
   password      String
   movies        Movie[]
 }
 
 model Movie {
-  id            Int      @id @default(autoincrement())
-  title         String   @db.VarChar(150)
-  description   String   @db.VarChar(300)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  user          User     @relation(fields: [user_Id], references: [id])
+  id            Int       @id @default(autoincrement())
+  title         String    @db.VarChar(150)
+  description   String    @db.VarChar(300)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  user          User      @relation(fields: [user_Id], references: [id])
   user_Id       Int
-  gender        Gender   @relation(fields: [gender_Id], references: [id])
+  gender        Gender    @relation(fields: [gender_Id], references: [id])
   gender_Id     Int
 }
 
 model Gender {
-  id            Int     @id @default(autoincrement())
-  name          String  @db.VarChar(200)
+  id            Int       @id @default(autoincrement())
+  name          String    @db.VarChar(200)
   movies        Movie[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }

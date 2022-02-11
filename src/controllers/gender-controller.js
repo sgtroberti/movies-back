@@ -4,6 +4,7 @@ export const index = async (req, res) => {
   try {
     const genders = await prisma.gender.findMany({
       select: {
+        id: true,
         name: true,
       },
     });
